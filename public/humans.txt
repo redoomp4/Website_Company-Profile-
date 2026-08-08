@@ -1,0 +1,6 @@
+/* TEAM */
+Company: PT Nusantara Digital
+Website: https://github.com/redoomp4/Website_Company-Profile-
+
+/* TECHNOLOGY */
+React + Vite
