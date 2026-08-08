@@ -1,0 +1,10 @@
+# Dependencies and production output
+node_modules/
+dist/
+
+# Local editor and environment files
+.env
+.env.*
+!.env.example
+.vscode/
+*.log
