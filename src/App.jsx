@@ -6,26 +6,25 @@ import ContactCard from './components/ContactCard.jsx'
 import SiteFooter from './components/SiteFooter.jsx'
 import ScrollTopButton from './components/ScrollTopButton.jsx'
 import { services, team } from './data/company.js'
+import useReveal from './hooks/useReveal.js'
 
 function App() {
   const [open, setOpen] = useState(false)
   const [sent, setSent] = useState(false)
 
+  useReveal()
+
   useEffect(() => {
-    const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('revealed'); reveal.unobserve(entry.target) }
-    }), { threshold: 0.14 })
     const stats = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return
       const el = entry.target; const target = Number(el.dataset.target); const suffix = el.dataset.suffix || ''; const start = performance.now()
       const tick = now => { const progress = Math.min((now - start) / 1200, 1); el.textContent = Math.floor(progress * target).toLocaleString('id-ID') + suffix; if (progress < 1) requestAnimationFrame(tick) }
       requestAnimationFrame(tick); stats.unobserve(el)
     }), { threshold: 0.7 })
-    document.querySelectorAll('.reveal').forEach(el => reveal.observe(el))
     document.querySelectorAll('.stat-number').forEach(el => stats.observe(el))
     const onScroll = () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30)
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll()
-    return () => { reveal.disconnect(); stats.disconnect(); window.removeEventListener('scroll', onScroll) }
+    return () => { stats.disconnect(); window.removeEventListener('scroll', onScroll) }
   }, [])
 
   const closeMenu = () => setOpen(false)
