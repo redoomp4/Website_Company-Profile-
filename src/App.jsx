@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Logo from './components/Logo.jsx'
 import SectionHeader from './components/SectionHeader.jsx'
 import FormField from './components/FormField.jsx'
@@ -8,6 +8,7 @@ import ScrollTopButton from './components/ScrollTopButton.jsx'
 import { services, team } from './data/company.js'
 import useReveal from './hooks/useReveal.js'
 import useStatCount from './hooks/useStatCount.js'
+import useNavbarScroll from './hooks/useNavbarScroll.js'
 
 function App() {
   const [open, setOpen] = useState(false)
@@ -15,12 +16,7 @@ function App() {
 
   useReveal()
   useStatCount()
-
-  useEffect(() => {
-    const onScroll = () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30)
-    window.addEventListener('scroll', onScroll, { passive: true }); onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  useNavbarScroll()
 
   const closeMenu = () => setOpen(false)
   const handleSubmit = event => { event.preventDefault(); setSent(true); event.currentTarget.reset() }
