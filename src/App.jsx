@@ -3,6 +3,7 @@ import Logo from './components/Logo.jsx'
 import SectionHeader from './components/SectionHeader.jsx'
 import FormField from './components/FormField.jsx'
 import ContactCard from './components/ContactCard.jsx'
+import SiteFooter from './components/SiteFooter.jsx'
 
 const team = [
   ['Andi Pratama', 'Chief Executive Officer', 'Leadership', 'team-andi.png'],
@@ -58,7 +59,7 @@ function App() {
       <section className="team" id="tim"><div className="container"><SectionHeader label="Orang-orang kami" title="Bertemu dengan tim di balik karya." text="Beragam keahlian, satu semangat: menciptakan perubahan yang berarti." /><div className="team-grid">{team.map(([name, role, division, photo], i) => <article className={`team-card reveal reveal-delay-${i % 3}`} key={name}><div className="team-card-img"><img src={`/assets/images/${photo}`} alt={name} /></div><div className="team-card-info"><h3>{name}</h3><p className="role">{role}</p><p className="division">{division}</p></div></article>)}</div></div></section>
       <section className="contact" id="kontak"><div className="container"><SectionHeader label="Mari terhubung" title="Ada ide yang ingin diwujudkan?" text="Sampaikan kebutuhan Anda. Tim kami akan menghubungi dalam satu hari kerja." /><div className="contact-grid"><div className="contact-info reveal"><ContactCard icon="☎" title="Nomor Pelayanan" detail={<>+62 21 5550 1234<br />Senin–Jumat, 09.00–17.00 WITA</>} href="tel:+622155501234" /><ContactCard icon="✉" title="Email" detail={<>hello@nusantaradigital.id<br />Untuk pertanyaan dan kerja sama</>} href="mailto:hello@nusantaradigital.id" /><ContactCard icon="⌖" title="Kantor Kami" detail={<>Jl. Sunset Road No. 88, Kuta<br />Badung, Bali 80361</>} /></div><form className="contact-form reveal reveal-delay-2" onSubmit={handleSubmit}><div className="form-row"><FormField name="name" label="Nama" placeholder="Nama Anda" /><FormField name="email" label="Email" type="email" placeholder="nama@email.com" /></div><div className="form-group"><label htmlFor="message">Ceritakan kebutuhan Anda</label><textarea id="message" name="message" required placeholder="Saya ingin berdiskusi tentang..." /></div><button className="btn-submit" type="submit">Kirim Pesan <span>→</span></button><p className="form-status" role="status">{sent && 'Terima kasih! Pesan Anda telah kami terima.'}</p></form></div></div></section>
     </main>
-    <footer className="footer"><div className="container"><div className="footer-bottom"><p>© 2026 PT Nusantara Digital. Seluruh hak dilindungi.</p><p>Dibuat dengan semangat untuk Indonesia.</p></div></div></footer>
+    <SiteFooter />
   </>
 }
 
