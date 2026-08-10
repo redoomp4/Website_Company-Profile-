@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Logo from './components/Logo.jsx'
 
 const team = [
   ['Andi Pratama', 'Chief Executive Officer', 'Leadership', 'team-andi.png'],
@@ -41,7 +42,7 @@ function App() {
 
   return <>
     <header className="navbar" id="navbar"><div className="container">
-      <a className="nav-logo" href="#beranda"><span className="logo-icon">N</span><span>Nusantara <span className="logo-text-highlight">Digital</span></span></a>
+      <Logo />
       <button className={`hamburger ${open ? 'active' : ''}`} onClick={() => setOpen(!open)} aria-label="Buka menu" aria-expanded={open}><span /><span /><span /></button>
       <nav className={`nav-menu ${open ? 'open' : ''}`}><a className="nav-link active" href="#beranda" onClick={closeMenu}>Beranda</a><a className="nav-link" href="#tentang" onClick={closeMenu}>Tentang</a><a className="nav-link" href="#visi-misi" onClick={closeMenu}>Visi & Misi</a><a className="nav-link" href="#layanan" onClick={closeMenu}>Layanan</a><a className="nav-link" href="#tim" onClick={closeMenu}>Tim</a><a className="nav-cta" href="#kontak" onClick={closeMenu}>Hubungi Kami</a></nav>
     </div></header>
