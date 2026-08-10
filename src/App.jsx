@@ -7,24 +7,19 @@ import SiteFooter from './components/SiteFooter.jsx'
 import ScrollTopButton from './components/ScrollTopButton.jsx'
 import { services, team } from './data/company.js'
 import useReveal from './hooks/useReveal.js'
+import useStatCount from './hooks/useStatCount.js'
 
 function App() {
   const [open, setOpen] = useState(false)
   const [sent, setSent] = useState(false)
 
   useReveal()
+  useStatCount()
 
   useEffect(() => {
-    const stats = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (!entry.isIntersecting) return
-      const el = entry.target; const target = Number(el.dataset.target); const suffix = el.dataset.suffix || ''; const start = performance.now()
-      const tick = now => { const progress = Math.min((now - start) / 1200, 1); el.textContent = Math.floor(progress * target).toLocaleString('id-ID') + suffix; if (progress < 1) requestAnimationFrame(tick) }
-      requestAnimationFrame(tick); stats.unobserve(el)
-    }), { threshold: 0.7 })
-    document.querySelectorAll('.stat-number').forEach(el => stats.observe(el))
     const onScroll = () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30)
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll()
-    return () => { stats.disconnect(); window.removeEventListener('scroll', onScroll) }
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const closeMenu = () => setOpen(false)
