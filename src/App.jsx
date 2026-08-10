@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Logo from './components/Logo.jsx'
+import SectionHeader from './components/SectionHeader.jsx'
 
 const team = [
   ['Andi Pratama', 'Chief Executive Officer', 'Leadership', 'team-andi.png'],
@@ -59,7 +60,6 @@ function App() {
   </>
 }
 
-function SectionHeader({ label, title, text }) { return <div className="section-header reveal"><span className="section-label">{label}</span><h2 className="section-title">{title}</h2><p className="section-subtitle">{text}</p></div> }
 function Field({ name, label, type = 'text', placeholder }) { return <div className="form-group"><label htmlFor={name}>{label}</label><input id={name} name={name} type={type} required placeholder={placeholder} /></div> }
 function Contact({ icon, title, detail, href }) { const content = <><div className="contact-info-icon">{icon}</div><div className="contact-info-text"><h4>{title}</h4><p>{detail}</p></div></>; return href ? <a className="contact-info-card" href={href}>{content}</a> : <div className="contact-info-card">{content}</div> }
 
